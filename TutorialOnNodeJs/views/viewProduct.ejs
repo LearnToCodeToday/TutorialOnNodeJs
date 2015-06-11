@@ -1,0 +1,121 @@
+﻿<% include layout %>
+
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%=title %></h3>
+ </div>
+
+ <br>
+
+
+  <div data-ng-app="productModule"
+         data-ng-controller="viewProductController">
+
+
+        <div class="container">
+
+           
+        <table data-ng-show="products.length > 0"
+               class='table table-striped table-hover'>
+            <tr class="success">
+                <td>
+				
+					<div 
+						data-order = "{OrderBy : 'ProductCategoryId', Name : 'DESC'}" 
+						data-ng-click="onHeaderClick( $event)" >
+						
+						Product Category Name</div>
+							
+				    </td>
+                <td>product Name</td>
+
+                <td>product Details</td>
+                <td>IsActive</td>
+                <td>Product Cost</td>
+				
+                <td>Product Price</td>
+                <td>Actions</td>
+            </tr>
+
+            <tr data-ng-repeat="product in products">
+                <td>{{product.CategoryName}}</td>
+                <td>{{product.Name}}</td>
+
+                <td>
+				
+				{{product.PartialDescription}} ...
+						<button 
+							type="button" 
+							class="btn btn-info" 
+							style="margin-left:80%"
+							data-toggle="modal"
+                            data-target="#ProductDetailsModalWindow"
+
+							data-ng-click = "showProductDetailsInformation(product)"
+							>
+							
+							
+								View Details
+							
+							
+							</button> 
+				
+				</td>
+                <td><input type="checkbox" checked="product.IsActive == "1" /></td>
+                <td>{{product.ProductCost | currency}}
+				</td>
+                <td>
+				
+				{{product.ProductPrice | currency}}
+				
+					
+				
+				
+				</td>
+                <td>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Edit Product  <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/editProduct/{{product.Id}}">Edit Product </a></li>
+                           
+                            
+                            <li>
+                                <button type="button"
+                                        class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#exampleModal"
+                                        data-categoryid="{{product.Id}}"
+                                        data-ng-click="setCurrentProductCategoryId(product.Id)">
+                                    Delete Product 
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+
+    </div> <!-- end of the container -->
+
+		<% include productDetailsView %>
+
+    </div> <!-- end of the main module section -->
+
+
+
+
+	
+
+
+
+	<script src="/bower_components/angular/angular.min.js"></script>
+	 <script src="../../javascripts/app/productCategory/productCategoryModule.js"></script>
+    <script src="../../javascripts/app/product/productModule.js"></script>
+	<script src="../../javascripts/app/productCategory/productCategoryService.js"></script>
+    <script src="../../javascripts/app/product/productService.js"></script>
+    <script src="../../javascripts/app/product/viewProductController.js"></script>

@@ -1,0 +1,59 @@
+﻿    <div class="modal fade"
+         id="ProductDetailsModalWindow"
+         tabindex="-1"
+         role="dialog"
+         aria-labelledby="ProductDetailsModalWindow" aria-hidden="true">
+
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    <b><h2 class="modal-title" id="exampleModalLabel">Product Details Information</h2></b>
+                </div>
+                <div class="modal-body">
+
+                    <p>
+                        <b>Product Category Name : </b>
+
+
+                        <div>{{productDetailsView.productCategoryName}}</div>
+
+
+                    </p>
+                    <hr>
+                    <p>
+                        <b>Product  Name : </b>
+                        <div>{{productDetailsView.productName}}</div>
+                        <hr>
+                    <p>
+                        <b>Product Description : </b>
+
+                        <div>{{productDetailsView.productDescription}}</div>
+
+                        <hr>
+                    <p>
+                        <b>Product Cost : </b>
+
+                        <div>{{productDetailsView.productPrice | currency}}</div>
+
+                        <hr>
+                    <p>
+                        <b>Product Selling Price : </b>
+
+                        <div>{{productDetailsView.productSellingPrice | currency}}</div>
+
+                        <hr>
+                    <p>
+                        <b>Product Released To Market : </b>
+
+                        <div>{{ productDetailsView.productReleaseDate | date:"MM/dd/yyyy 'at' h:mma"}}</div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+                </div>
+            </div>
+            </div>

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+
+    <div data-ng-app="productModule"
+         data-ng-controller="viewProductController">
+
+
+        <div class="container">
+
+           
+        <table data-ng-show="products.length > 0"
+               class='table table-striped table-hover'>
+            <tr class="success">
+                <td>Product Category Name</td>
+                <td>product Name</td>
+
+                <td>product Details</td>
+                <td>IsActive</td>
+                <td>Product Cost</td>
+
+                <td>Product Price</td>
+                <td>Actions</td>
+            </tr>
+
+            <tr data-ng-repeat="productCategory in productCategories">
+                <td>{{product.CategoryName}}</td>
+                <td>{{product.Name}}</td>
+
+                <td>{{product.Description}}</td>
+                <td><input type="checkbox" checked="product.IsActive == "1" /></td>
+                <td>{{product.ProductCost}}</td>
+                <td>{{product.ProductPrice}}</td>
+                <td class="info">
+
+                    <!-- Single button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            Edit Product Category <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/editProductCategory/{{productCategory.Id}}">Edit Product Category</a></li>
+                            <li><a href="#">View Details</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <button type="button"
+                                        class="btn btn-primary"
+                                        data-toggle="modal"
+                                        data-target="#exampleModal"
+                                        data-categoryid="{{productCategory.Id}}"
+                                        data-ng-click="setCurrentProductCategoryId(productCategory.Id)">
+                                    Delete Product Category
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+
+        </div>
+
+    </div>
+
+
+
+
+</body>
+</html>
